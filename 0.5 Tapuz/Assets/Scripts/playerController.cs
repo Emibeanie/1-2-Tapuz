@@ -20,12 +20,6 @@ public class playerController : MonoBehaviour
     private float jumpTime;
     private bool isGrounded;
     private bool isJumping;
-
-    void Start()
-    {
-        
-    }
-
    
     void Update()
     {

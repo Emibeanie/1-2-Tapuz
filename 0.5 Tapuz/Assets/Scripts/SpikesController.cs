@@ -24,20 +24,16 @@ public class SpikesController : MonoBehaviour
         playerStartPos = new Vector2(-6.503481f, -3.842818f);
         initialPosition = transform.position;
         currentUpMoveSpeed = startUpMoveSpeed;
-        Invoke("ToggleSpikes", waitTime); // Invoke the ToggleSpikes method with a delay
+        Invoke("ToggleSpikes", waitTime);
     }
 
     void ToggleSpikes()
     {
         spikesUp = !spikesUp;
         if (spikesUp)
-        {
             StartCoroutine(MoveSpike(initialPosition + new Vector2(0, moveSpace), upTime, currentUpMoveSpeed));
-        }
         else
-        {
             StartCoroutine(MoveSpike(initialPosition, downTime, downMoveSpeed));
-        }
 
         Invoke("ToggleSpikes", spikesUp ? upTime : downTime);
     }
@@ -60,13 +56,9 @@ public class SpikesController : MonoBehaviour
     private void Update()
     {
         if(spikesUp && currentUpMoveSpeed < maxUpMoveSpeed)
-        {
             currentUpMoveSpeed += Time.deltaTime;
-        }
         else
-        {
             currentUpMoveSpeed = startUpMoveSpeed;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
