@@ -7,9 +7,11 @@ public class shardsController : MonoBehaviour
     [SerializeField] GameObject ShardPanel;
     [SerializeField] GameObject ShardSprite;
     [SerializeField] GameObject SymbolSprite;
-    [SerializeField] SpriteRenderer LockShard;
-    public string LockShardMaterialPath;
-
+    [SerializeField] GameObject LockShard;
+    [SerializeField] GameObject LockShardActive;
+    [SerializeField] GameObject Particles;
+   
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -21,8 +23,13 @@ public class shardsController : MonoBehaviour
         ShardPanel.SetActive(false);
         ShardSprite.SetActive(false);
         SymbolSprite.SetActive(true);
-
-        LockShard.material = Resources.Load<Material>(LockShardMaterialPath);
+        ShardActivation();
     }
 
+    void ShardActivation()
+    {
+        LockShard.SetActive(false);
+        LockShardActive.SetActive(true);
+      //  Particles.SetActive(true);
+    }
 }
