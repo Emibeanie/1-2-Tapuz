@@ -10,6 +10,7 @@ public class shardsController : MonoBehaviour
     [SerializeField] GameObject LockShard;
     [SerializeField] GameObject LockShardActive;
     [SerializeField] GameObject Particles;
+    [SerializeField] GameObject RoomLight;
    
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,6 +31,7 @@ public class shardsController : MonoBehaviour
     {
         LockShard.SetActive(false);
         LockShardActive.SetActive(true);
+      //  RoomLight.SetActive(true);
       //  Particles.SetActive(true);
     }
 }
