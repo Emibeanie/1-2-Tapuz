@@ -7,7 +7,6 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] SpriteRenderer sr;
 
     public float moveSpeed;
     public float jumpForce;
@@ -33,10 +32,8 @@ public class playerController : MonoBehaviour
     }
     void FaceMoveDirection()
     {
-        if (moveInput > 0)
-            sr.flipX = false;
-        else if (moveInput < 0)
-            sr.flipX = true;
+        bool flipped = moveInput < 0;
+        this.transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
     }
     
     void Jump()
