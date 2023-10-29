@@ -14,14 +14,13 @@ public class SpikesController : MonoBehaviour
     public float downMoveSpeed;
     public float waitTime;
 
-    private Vector2 playerStartPos;
+    public Vector2 playerStartPos;
     private Vector2 initialPosition;
     private bool spikesUp = false;
     private float currentUpMoveSpeed;
 
     void Start()
     {
-        playerStartPos = new Vector2(-6.503481f, -3.842818f);
         initialPosition = transform.position;
         currentUpMoveSpeed = startUpMoveSpeed;
         Invoke("ToggleSpikes", waitTime);

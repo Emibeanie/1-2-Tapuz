@@ -19,10 +19,21 @@ public class playerController : MonoBehaviour
     private float jumpTime;
     private bool isGrounded;
     private bool isJumping;
+    private bool isFacingRight = true;
    
     void Update()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
+        if(moveInput > 0 && !isFacingRight)
+        {
+            isFacingRight = true;
+            FaceMoveDirection();
+        }
+        else if(moveInput < 0 && isFacingRight)
+        {
+            isFacingRight = false;
+            FaceMoveDirection();
+        }
         FaceMoveDirection();
         Jump();
     }
@@ -32,7 +43,7 @@ public class playerController : MonoBehaviour
     }
     void FaceMoveDirection()
     {
-        bool flipped = moveInput < 0;
+        bool flipped = !isFacingRight;
         this.transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
     }
     
