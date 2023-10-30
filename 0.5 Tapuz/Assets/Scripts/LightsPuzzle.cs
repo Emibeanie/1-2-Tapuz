@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class LightsPuzzle : MonoBehaviour
 {
@@ -8,83 +9,83 @@ public class LightsPuzzle : MonoBehaviour
     [SerializeField] Vector2 playerStartPos;
     [SerializeField] GameObject Shard;
 
-    [Header("Lights")] 
-    [SerializeField] GameObject Light1;
-    [SerializeField] GameObject Light2;
-    [SerializeField] GameObject Light3;
-    [Header("Platforms")] 
-    [SerializeField] GameObject Plat1;
-    [SerializeField] GameObject Plat2;
-    [SerializeField] GameObject Plat3;
-    [SerializeField] GameObject Plat4;
-    [SerializeField] GameObject Plat5;
+    [Header("Lights")]
+    [SerializeField] GameObject[] lights;
 
-   
+    [Header("Platforms")]
+    [SerializeField] GameObject[] platforms;
 
-    public float waitTime;
-    public float waitTime2;
-    public float waitTime3;
-
-    private bool LightsOn = false;
+    public float light1Duration;
+    public float light2Duration;
+    public float light3Duration;
 
     void Start()
     {
-        Light1.SetActive(false);
-        Light2.SetActive(false);
-        Light3.SetActive(false);
+        foreach (var light in lights)
+            light.SetActive(false);
 
         StartCoroutine(LightsControl());
     }
-
-    void Update()
+    private void Update()
+    {
+        LightsActive();
+    }
+    void LightsActive()
     {
         if (!Shard.activeSelf)
-            LightsOn = true;
+        {
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].SetActive(true);
+            }
+
+            for (int i = 0; i < platforms.Length; i++)
+            {
+                platforms[i].SetActive(true);
+            }
+        }
     }
 
     IEnumerator LightsControl()
     {
-        while (!LightsOn)
+        while (Shard.activeSelf)
         {
-            Lights1();
-
-            Lights2();
-
-            Lights3();
+            yield return Lights1(light1Duration);
+            yield return Lights2(light2Duration);
+            yield return Lights3(light3Duration);
         }
-        yield break;
     }
-    IEnumerator Lights1()
+    IEnumerator Lights1(float duration)
     {
-        Light1.SetActive(true);
-        Plat1.SetActive(true);
-        Plat2.SetActive(true);
-        yield return new WaitForSeconds(waitTime);
-        Light1.SetActive(false);
-        Plat1.SetActive(true);
-        Plat2.SetActive(true);
+        lights[0].SetActive(true);
+        platforms[0].SetActive(true);
+        platforms[1].SetActive(true);
+        yield return new WaitForSeconds(duration);
+        lights[0].SetActive(false);
+        platforms[0].SetActive(false);
+        platforms[1].SetActive(false);
     }
-    IEnumerator Lights2()
+    IEnumerator Lights2(float duration)
     {
-        Light2.SetActive(true);
-        Plat2.SetActive(true);
-        Plat3.SetActive(true);
-        Plat4.SetActive(true);
-        yield return new WaitForSeconds(waitTime2);
-        Light2.SetActive(false);
-        Plat2.SetActive(false);
-        Plat3.SetActive(false);
-        Plat4.SetActive(false);
+        lights[1].SetActive(true);
+        platforms[1].SetActive(true);
+        platforms[2].SetActive(true);
+        platforms[3].SetActive(true);
+        yield return new WaitForSeconds(duration);
+        lights[1].SetActive(false);
+        platforms[1].SetActive(false);
+        platforms[2].SetActive(false);
+        platforms[3].SetActive(false);
     }
-    IEnumerator Lights3()
+    IEnumerator Lights3(float duration)
     {
-        Light3.SetActive(true);
-        Plat4.SetActive(true);
-        Plat5.SetActive(true);
-        yield return new WaitForSeconds(waitTime3);
-        Light3.SetActive(false);
-        Plat4.SetActive(false);
-        Plat5.SetActive(false);
+        lights[2].SetActive(true);
+        platforms[3].SetActive(true);
+        platforms[4].SetActive(true);
+        yield return new WaitForSeconds(duration);
+        lights[2].SetActive(false);
+        platforms[3].SetActive(false);
+        platforms[4].SetActive(false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
