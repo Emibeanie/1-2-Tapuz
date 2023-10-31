@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator animator;
 
@@ -15,13 +16,13 @@ public class playerController : MonoBehaviour
     public float checkRadius;
     public Transform feetPos;
     public LayerMask whatIsGround;
-    
+
     private float moveInput;
     private float jumpTime;
     private bool isGrounded;
     private bool isJumping;
     private bool isFacingRight = true;
-    
+
     void Update()
     {
         Movement();
@@ -63,43 +64,50 @@ public class playerController : MonoBehaviour
         bool flipped = !isFacingRight;
         transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
     }
-    
+
     void Jump()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-       
-        //short jump
+
         if (isGrounded == true && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
             jumpTime = jumpStartTime;
             rb.velocity = Vector2.up * jumpForce;
-            animator.SetBool("IsJumpingL", true);
         }
-        
-        //long jump
+
         if (Input.GetButton("Jump") && isJumping == true)
         {
             if (jumpTime > 0)
             {
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTime -= Time.deltaTime;
-                animator.SetBool("IsJumpingH", true);
             }
             else
             {
                 isJumping = false;
-                animator.SetBool("IsJumpingH", false);
-                animator.SetBool("IsJumpingL", false);
             }
         }
 
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
-            animator.SetBool("IsJumpingH", false);
-            animator.SetBool("IsJumpingL", false);
-            animator.SetBool("IsIdle", true);
+        }
+
+        if (isJumping)
+        {
+            if (jumpTime > 0.5f)
+            {
+                animator.SetBool("IsJumpingH", true);
+                animator.SetBool("IsJumpingL", false);
+                animator.SetBool("IsIdle", false);
+            }
+            else
+            {
+                animator.SetBool("IsJumpingH", false);
+                animator.SetBool("IsJumpingL", true);
+                animator.SetBool("IsIdle", false);
+            }
         }
     }
 
@@ -108,3 +116,4 @@ public class playerController : MonoBehaviour
         Gizmos.DrawWireSphere(feetPos.position, checkRadius);
     }
 }
+
