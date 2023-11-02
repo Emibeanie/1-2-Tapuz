@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpikesController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D playerRB;
+    [SerializeField] GameObject Elevator;
 
     public float upTime;
     public float downTime;
@@ -15,6 +16,7 @@ public class SpikesController : MonoBehaviour
     public float waitTime;
 
     public Vector2 playerStartPos;
+    public Vector2 ElevatorStartPos;
     private Vector2 initialPosition;
     private bool spikesUp = false;
     private float currentUpMoveSpeed;
@@ -64,5 +66,6 @@ public class SpikesController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
             playerRB.transform.position = playerStartPos;
+            Elevator.transform.position = ElevatorStartPos;
     }
 }

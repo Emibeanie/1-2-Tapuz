@@ -6,18 +6,19 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-
+    [Header("Components")]
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Animator animator;
-
-    public float moveSpeed;
-    public float jumpForce;
-    public float jumpStartTime;
-    public float checkRadius;
     public Transform feetPos;
     public LayerMask whatIsGround;
 
+    [Header("Physics")]
+    public float moveSpeed;
+    public float jumpForce;
+    public float jumpStartTime;
+    public float checkRadius = 2f;
     private float moveInput;
+    
     private float jumpTime;
     private bool isGrounded;
     private bool isJumping;
@@ -28,6 +29,8 @@ public class playerController : MonoBehaviour
         Movement();
         FaceMoveDirection();
         Jump();
+
+        
     }
     private void FixedUpdate()
     {
@@ -41,11 +44,14 @@ public class playerController : MonoBehaviour
         {
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsIdle", false);
+           // animator.SetBool("IsJumping", false);
+            Debug.Log("ISjump Set to false");
         }
         else
         {
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsIdle", true);
+            Debug.Log("ISjump Set to false");
         }
 
         if (moveInput > 0 && !isFacingRight)
@@ -68,52 +74,64 @@ public class playerController : MonoBehaviour
     void Jump()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-
-        if (isGrounded == true && Input.GetButtonDown("Jump"))
-        {
-            isJumping = true;
-            jumpTime = jumpStartTime;
-            rb.velocity = Vector2.up * jumpForce;
-        }
-
-        if (Input.GetButton("Jump") && isJumping == true)
-        {
-            if (jumpTime > 0)
-            {
-                rb.velocity = Vector2.up * jumpForce;
-                jumpTime -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
-
-        if (Input.GetButtonUp("Jump"))
-        {
-            isJumping = false;
-        }
-
+        animator.SetBool("IsGrounded", isGrounded);
         if (isJumping)
         {
-            if (jumpTime > 0.5f)
+            if (rb.velocity.y < 0)
             {
-                animator.SetBool("IsJumpingH", true);
-                animator.SetBool("IsJumpingL", false);
-                animator.SetBool("IsIdle", false);
-            }
-            else
-            {
-                animator.SetBool("IsJumpingH", false);
-                animator.SetBool("IsJumpingL", true);
-                animator.SetBool("IsIdle", false);
+                isJumping = false;
+                animator.SetBool("IsJumping", false);
+                Debug.Log("is falling");
             }
         }
+        else
+        {
+            if (isGrounded)
+            {
+                if (isGrounded)
+                    animator.SetBool("IsJumping", false);
+
+
+                if (Input.GetButtonDown("Jump"))
+                {
+                    isJumping = true;
+                    //jumpTime = jumpStartTime;
+                    rb.velocity = Vector2.up * jumpForce;
+                    jumpTime = 0.0f;
+
+                    animator.SetBool("IsRunning", false);
+                    animator.SetBool("IsIdle", false);
+                    animator.SetBool("IsJumping", true);
+                    Debug.Log("ISjump Set to true");
+                }
+
+                if (Input.GetButton("Jump") && isJumping)
+                {
+                    if (jumpTime < jumpStartTime)
+                    {
+                        rb.velocity = Vector2.up * jumpForce;
+                        jumpTime += Time.deltaTime;
+                    }
+                }
+
+                if (Input.GetButtonUp("Jump"))
+                {
+                    isJumping = false;
+
+                    animator.SetBool("IsRunning", false);
+                    animator.SetBool("IsIdle", true);
+                    animator.SetBool("IsJumping", false);
+                    Debug.Log("ISjump Set to false");
+                }
+
+            }
+        }
+
     }
 
-    void OnDirection()
-    {
-        Gizmos.DrawWireSphere(feetPos.position, checkRadius);
-    }
+    //void OnDirection()
+    //{
+    //    Gizmos.DrawWireSphere(feetPos.position, checkRadius);
+    //}
 }
 
