@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class LightsPuzzle : MonoBehaviour
+public class lightsPuzzle : MonoBehaviour
 {
     [SerializeField] Rigidbody2D playerRB;
     [SerializeField] Vector2 playerStartPos;

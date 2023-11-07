@@ -44,14 +44,11 @@ public class playerController : MonoBehaviour
         {
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsIdle", false);
-           // animator.SetBool("IsJumping", false);
-            Debug.Log("ISjump Set to false");
         }
         else
         {
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsIdle", true);
-            Debug.Log("ISjump Set to false");
         }
 
         if (moveInput > 0 && !isFacingRight)
@@ -81,7 +78,6 @@ public class playerController : MonoBehaviour
             {
                 isJumping = false;
                 animator.SetBool("IsJumping", false);
-                Debug.Log("is falling");
             }
         }
         else
@@ -102,7 +98,6 @@ public class playerController : MonoBehaviour
                     animator.SetBool("IsRunning", false);
                     animator.SetBool("IsIdle", false);
                     animator.SetBool("IsJumping", true);
-                    Debug.Log("ISjump Set to true");
                 }
 
                 if (Input.GetButton("Jump") && isJumping)
@@ -121,17 +116,11 @@ public class playerController : MonoBehaviour
                     animator.SetBool("IsRunning", false);
                     animator.SetBool("IsIdle", true);
                     animator.SetBool("IsJumping", false);
-                    Debug.Log("ISjump Set to false");
                 }
 
             }
         }
 
     }
-
-    //void OnDirection()
-    //{
-    //    Gizmos.DrawWireSphere(feetPos.position, checkRadius);
-    //}
 }
 

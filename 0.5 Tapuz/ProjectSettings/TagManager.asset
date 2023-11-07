@@ -10,9 +10,6 @@ TagManager:
   - R4
   - R5
   - R6
-  - Button1
-  - Button2
-  - Button3
   layers:
   - Default
   - TransparentFX
@@ -47,9 +44,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 6082511
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 10
+  - name: Player
     uniqueID: 1959179079
+    locked: 0
+  - name: Foreground
+    uniqueID: 2651842903
     locked: 0
