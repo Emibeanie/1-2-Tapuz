@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class lightsPuzzle : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] Rigidbody2D playerRB;
     [SerializeField] Vector2 playerStartPos;
     [SerializeField] GameObject Panel;

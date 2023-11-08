@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class spikesController : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] Rigidbody2D playerRB;
     [SerializeField] GameObject Elevator;
 
+    [Header("Physics")]
     public float upTime;
     public float downTime;
     public float moveSpace;
