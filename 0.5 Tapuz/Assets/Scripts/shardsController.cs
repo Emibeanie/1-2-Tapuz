@@ -11,8 +11,13 @@ public class shardsController : MonoBehaviour
     [SerializeField] GameObject LockShardActive;
     [SerializeField] GameObject Particles;
     [SerializeField] GameObject RoomLight;
-   
-    
+
+    private void Update()
+    {
+        if (ShardPanel.activeSelf)
+            if (Input.GetKeyDown(KeyCode.Escape))
+                ExitButton();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
