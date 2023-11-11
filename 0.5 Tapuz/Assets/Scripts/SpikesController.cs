@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spikesController : MonoBehaviour
+public class SpikesController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D playerRB;

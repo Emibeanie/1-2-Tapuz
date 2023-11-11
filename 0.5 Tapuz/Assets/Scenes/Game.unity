@@ -1208,11 +1208,11 @@ MonoBehaviour:
   upTime: 1
   downTime: 1.3
   moveSpace: 0.4
-  startUpMoveSpeed: 5
-  maxUpMoveSpeed: 10
-  downMoveSpeed: 20
-  waitTime: 0
-  playerStartPos: {x: -9.63, y: 1.98}
+  startUpMoveSpeed: 4
+  maxUpMoveSpeed: 4
+  downMoveSpeed: 4
+  waitTime: 1
+  playerStartPos: {x: -9.4, y: 2.6}
   ElevatorStartPos: {x: -30.23682, y: 0.7391357}
 --- !u!61 &170356041
 BoxCollider2D:
@@ -1295,11 +1295,11 @@ MonoBehaviour:
   upTime: 1
   downTime: 1.3
   moveSpace: 0.4
-  startUpMoveSpeed: 5
-  maxUpMoveSpeed: 10
-  downMoveSpeed: 20
-  waitTime: 0
-  playerStartPos: {x: -9.63, y: 1.98}
+  startUpMoveSpeed: 4
+  maxUpMoveSpeed: 4
+  downMoveSpeed: 4
+  waitTime: 1
+  playerStartPos: {x: -9.4, y: 2.6}
   ElevatorStartPos: {x: -30.23682, y: 0.7391357}
 --- !u!61 &176903347
 BoxCollider2D:
@@ -1669,14 +1669,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRB: {fileID: 1217260842}
   Elevator: {fileID: 517596002}
-  upTime: 0.7
-  downTime: 1.5
-  moveSpace: 4.3
-  startUpMoveSpeed: 1
-  maxUpMoveSpeed: 1
-  downMoveSpeed: 1
+  upTime: 1
+  downTime: 2
+  moveSpace: 5
+  startUpMoveSpeed: 2
+  maxUpMoveSpeed: 4
+  downMoveSpeed: 3
   waitTime: 0
-  playerStartPos: {x: -27.71, y: 1.98}
+  playerStartPos: {x: -27.16, y: 0.76}
   ElevatorStartPos: {x: -30.23682, y: 0.7391357}
 --- !u!1 &247804684
 GameObject:
@@ -8824,15 +8824,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 1217260842}
-  Elevator: {fileID: 1217260840}
+  Elevator: {fileID: 517596002}
   upTime: 1
   downTime: 1.3
   moveSpace: 0.4
-  startUpMoveSpeed: 5
-  maxUpMoveSpeed: 10
-  downMoveSpeed: 20
-  waitTime: 1
-  playerStartPos: {x: -9.63, y: 1.98}
+  startUpMoveSpeed: 4
+  maxUpMoveSpeed: 4
+  downMoveSpeed: 4
+  waitTime: 0
+  playerStartPos: {x: -9.4, y: 2.6}
   ElevatorStartPos: {x: -30.23682, y: 0.7391357}
 --- !u!61 &1092625997
 BoxCollider2D:
@@ -9979,7 +9979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217260840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.79, y: -4.3, z: 0}
+  m_LocalPosition: {x: -7.34, y: -4.22, z: 0}
   m_LocalScale: {x: 0.17, y: 0.17, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11607,11 +11607,11 @@ MonoBehaviour:
   upTime: 1
   downTime: 1.3
   moveSpace: 0.4
-  startUpMoveSpeed: 5
-  maxUpMoveSpeed: 10
-  downMoveSpeed: 20
-  waitTime: 1
-  playerStartPos: {x: -9.63, y: 1.98}
+  startUpMoveSpeed: 4
+  maxUpMoveSpeed: 4
+  downMoveSpeed: 4
+  waitTime: 0
+  playerStartPos: {x: -9.4, y: 2.6}
   ElevatorStartPos: {x: -30.23682, y: 0.7391357}
 --- !u!61 &1415330925
 BoxCollider2D:
@@ -12566,11 +12566,11 @@ MonoBehaviour:
   upTime: 1
   downTime: 1.3
   moveSpace: 0.4
-  startUpMoveSpeed: 5
-  maxUpMoveSpeed: 10
-  downMoveSpeed: 20
-  waitTime: 1
-  playerStartPos: {x: -10.53, y: -3.02}
+  startUpMoveSpeed: 4
+  maxUpMoveSpeed: 4
+  downMoveSpeed: 4
+  waitTime: 0
+  playerStartPos: {x: -10.5, y: -3.65}
   ElevatorStartPos: {x: -30.23682, y: 0.7391357}
 --- !u!61 &1510851162
 BoxCollider2D:
@@ -13450,7 +13450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1670422467}
   - component: {fileID: 1670422469}
-  - component: {fileID: 1670422468}
+  - component: {fileID: 1670422470}
   m_Layer: 0
   m_Name: Room Controller
   m_TagString: Untagged
@@ -13473,34 +13473,6 @@ Transform:
   m_Father: {fileID: 681070308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1670422468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670422466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a95561f922b1c408778bbfcf295f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRB: {fileID: 1217260842}
-  playerStartPos: {x: 9.5, y: -1.08}
-  Panel: {fileID: 2138305319}
-  lights:
-  - {fileID: 550710785}
-  - {fileID: 1939369005}
-  - {fileID: 595780697}
-  platforms:
-  - {fileID: 555836608}
-  - {fileID: 2079507059}
-  - {fileID: 901358702}
-  - {fileID: 1377269708}
-  - {fileID: 2017070634}
-  light1Duration: 2
-  light2Duration: 2
-  light3Duration: 2
 --- !u!61 &1670422469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13527,6 +13499,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1670422470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670422466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a95561f922b1c408778bbfcf295f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRB: {fileID: 1217260842}
+  playerStartPos: {x: 10, y: -0.26}
+  Panel: {fileID: 2138305319}
+  lights:
+  - {fileID: 550710785}
+  - {fileID: 1939369005}
+  - {fileID: 595780697}
+  platforms:
+  - {fileID: 555836608}
+  - {fileID: 2079507059}
+  - {fileID: 901358702}
+  - {fileID: 1377269708}
+  - {fileID: 2017070634}
+  light1Duration: 1.5
+  light2Duration: 1.5
+  light3Duration: 1.5
 --- !u!1 &1676531462
 GameObject:
   m_ObjectHideFlags: 0
