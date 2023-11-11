@@ -1671,7 +1671,7 @@ MonoBehaviour:
   Elevator: {fileID: 517596002}
   upTime: 1
   downTime: 2
-  moveSpace: 5
+  moveSpace: 4.3
   startUpMoveSpeed: 2
   maxUpMoveSpeed: 4
   downMoveSpeed: 3
