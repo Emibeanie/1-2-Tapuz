@@ -19,8 +19,8 @@ public class playerController : MonoBehaviour
     private float moveInput;
 
     private float jumpPressedRememberTime = 0.2f;
-    private float jumpPressedRemember = 0;
-    private float groundedRemember = 0;
+    private float jumpPressedRemember;
+    private float groundedRemember;
     public float groundedRememberTime;
     public float cutJumpHeight;
     private bool isGrounded;
@@ -101,6 +101,14 @@ public class playerController : MonoBehaviour
 
         if (Input.GetButtonUp("Jump"))
         {
+            if (rb.velocity.y > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
+                animator.SetBool("IsJumping", false);
+            }
+        }
+        if (Input.GetButtonUp("Jump"))
+        {
             animator.SetBool("IsJumping", false);
         }
     }
@@ -115,77 +123,3 @@ public class playerController : MonoBehaviour
         }
     }
 }
-
-
-
-//void Jump()
-//{
-//    isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-//    animator.SetBool("IsGrounded", isGrounded);
-//    fGroundedRemember -= Time.deltaTime;
-//    fJumpPressedRemember -= Time.deltaTime;
-
-//    if (isJumping)
-//    {
-//        if (rb.velocity.y < 0)
-//        {
-//            isJumping = false;
-//            animator.SetBool("IsJumping", false);
-//        }
-//    }
-//    else
-//    {
-//        if (isGrounded)
-//        {
-//            animator.SetBool("IsJumping", false);
-//            fGroundedRemember = fGroundedRememberTime;
-
-
-//            if (Input.GetButtonDown("Jump"))
-//            {
-//                isJumping = true;
-//                jumpTime = 0.0f;
-//                isJumpButtonDown = true;
-//                fJumpPressedRemember = fJumpPressedRememberTime;
-
-//                animator.SetBool("IsRunning", false);
-//                animator.SetBool("IsIdle", false);
-//                animator.SetBool("IsJumping", true);
-
-//                rb.velocity = Vector2.up * shortJumpForce;
-//            }
-//        }
-//    }
-
-//    if (Input.GetButton("Jump") && isJumping)
-//    {
-//        if (isJumpButtonDown)
-//        {
-//            rb.velocity = new Vector2(rb.velocity.x, shortJumpForce);
-//            isJumpButtonDown = false;
-//        }
-//        if (jumpTime < maxJumpTime)
-//        {
-//            rb.velocity = new Vector2(rb.velocity.x, shortJumpForce);
-//            jumpTime += Time.deltaTime;
-//        }
-//        else
-//        {
-//            rb.velocity = new Vector2(rb.velocity.x, longJumpForce);
-//        }
-//    }
-
-
-//    if (Input.GetButtonUp("Jump"))
-//    {
-//        isJumping = false;
-//        isJumpButtonDown = false;
-
-//        animator.SetBool("IsRunning", false);
-//        animator.SetBool("IsIdle", true);
-//        animator.SetBool("IsJumping", false);
-//    }
-//}
-//}
-
-
