@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movingPlatController : MonoBehaviour
+public class elevatorController : MonoBehaviour
 {
     public float moveSpeed;
     private float leftLimit = -41.07f;

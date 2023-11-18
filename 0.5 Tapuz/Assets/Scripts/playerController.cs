@@ -8,16 +8,19 @@ public class playerController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] SpriteRenderer[] sr;
     [SerializeField] Animator animator;
     public Transform feetPos;
     public LayerMask whatIsGround;
-
+    
     [Header("Physics")]
     public float moveSpeed;
     public float jumpForce;
     public float checkRadius = 2f;
     private float moveInput;
 
+    private string backJumpLayer = "Default";
+    private string forwardJumpLayer = "Player";
     private float jumpPressedRememberTime = 0.2f;
     private float jumpPressedRemember;
     private float groundedRemember;
@@ -31,13 +34,13 @@ public class playerController : MonoBehaviour
         Movement();
         FaceMoveDirection();
         Jump();
-
-
     }
+
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
     }
+
     void Movement()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
@@ -79,38 +82,45 @@ public class playerController : MonoBehaviour
         animator.SetBool("IsGrounded", isGrounded);
 
         groundedRemember -= Time.deltaTime;
+
         if (isGrounded)
-        {
             groundedRemember = groundedRememberTime;
-        }
 
         jumpPressedRemember -= Time.deltaTime;
+
         if (Input.GetButtonDown("Jump"))
-        {
             jumpPressedRemember = jumpPressedRememberTime;
-        }
 
         if(isGrounded)
-        {
             if (Input.GetButtonDown("Jump"))
             {
                 animator.SetBool("IsJumping", true);
+                
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+                foreach (SpriteRenderer renderer in sr)
+                {
+                    renderer.sortingLayerName = backJumpLayer;
+                }
             }
-        }
 
         if (Input.GetButtonUp("Jump"))
-        {
             if (rb.velocity.y > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
                 animator.SetBool("IsJumping", false);
             }
-        }
+        
+
         if (Input.GetButtonUp("Jump"))
-        {
             animator.SetBool("IsJumping", false);
-        }
+
+        if(rb.velocity.y <= 0.3)
+
+            foreach (SpriteRenderer renderer in sr)
+            {
+                renderer.sortingLayerName = forwardJumpLayer;
+            }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
