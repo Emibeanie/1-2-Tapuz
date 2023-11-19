@@ -1,0 +1,421 @@
+fileFormatVersion: 2
+guid: 75e3ad55b3b4402488eabbdcf8e2781a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Shard4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 799
+      y: 4
+      width: 428
+      height: 477
+    spriteID: 5964ee1b22b04ee438f79fca7e5a2ad7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 799, y: 4}
+    spritePosition: {x: 400, y: 242}
+  - name: Shard3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1377
+      width: 454
+      height: 483
+    spriteID: 1fbc3783cfb9aeb4eb4885c10f6f5bbe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 1377}
+    spritePosition: {x: 224, y: 233}
+  - name: Shard2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1308
+      y: 1089
+      width: 327
+      height: 414
+    spriteID: acd7606183e977f48a5aa1183deb3bb3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1308, y: 1089}
+    spritePosition: {x: 195, y: 355}
+  - name: Shard1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1235
+      y: 4
+      width: 514
+      height: 356
+    spriteID: 07a065734b6348640acdc965578d8860
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1235, y: 4}
+    spritePosition: {x: 277, y: 478}
+  - name: Door_Lock
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1308
+      y: 668
+      width: 413
+      height: 413
+    spriteID: 43b2674127f65f64ba0cc62ec39396df
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1308, y: 668}
+    spritePosition: {x: 306, y: 344}
+  - name: Door_Amudim
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 787
+      height: 656
+    spriteID: 5c86182d06cfb694faaf172f930ddb16
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 119, y: 230}
+  - name: Door_L
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 657
+      y: 668
+      width: 319
+      height: 701
+    spriteID: 683eda65eda9b4543abfd66f48632330
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 657, y: 668}
+    spritePosition: {x: 190, y: 200}
+  - name: Door_R
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 984
+      y: 668
+      width: 316
+      height: 701
+    spriteID: 931c5ba555d89634a8e7efd227615cf3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 984, y: 668}
+    spritePosition: {x: 519, y: 200}
+  - name: Door_LightBack
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 668
+      width: 645
+      height: 701
+    spriteID: dec46665e71ecda45af07d7d93afc736
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 668}
+    spritePosition: {x: 190, y: 200}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Shard4
+    spriteName: Shard4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5964ee1b22b04ee438f79fca7e5a2ad7
+    layerID: 70
+    mosaicPosition: {x: 799, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Shard3
+    spriteName: Shard3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1fbc3783cfb9aeb4eb4885c10f6f5bbe
+    layerID: 62
+    mosaicPosition: {x: 4, y: 1377}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Shard2
+    spriteName: Shard2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: acd7606183e977f48a5aa1183deb3bb3
+    layerID: 54
+    mosaicPosition: {x: 1308, y: 1089}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Shard1
+    spriteName: Shard1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 07a065734b6348640acdc965578d8860
+    layerID: 47
+    mosaicPosition: {x: 1235, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Door_Lock
+    spriteName: Door_Lock
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 43b2674127f65f64ba0cc62ec39396df
+    layerID: 15
+    mosaicPosition: {x: 1308, y: 668}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Door_Amudim
+    spriteName: Door_Amudim
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5c86182d06cfb694faaf172f930ddb16
+    layerID: 26
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Door_L
+    spriteName: Door_L
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 683eda65eda9b4543abfd66f48632330
+    layerID: 24
+    mosaicPosition: {x: 657, y: 668}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Door_R
+    spriteName: Door_R
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 931c5ba555d89634a8e7efd227615cf3
+    layerID: 36
+    mosaicPosition: {x: 984, y: 668}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Door_LightBack
+    spriteName: Door_LightBack
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dec46665e71ecda45af07d7d93afc736
+    layerID: 28
+    mosaicPosition: {x: 4, y: 668}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
