@@ -20,12 +20,12 @@ public class lightsPuzzle : MonoBehaviour
     public float light2Duration;
     public float light3Duration;
 
+    private bool playerInRoom = false;
+
     void Start()
     {
         foreach (var light in lights)
             light.SetActive(false);
-
-        StartCoroutine(LightsControl());
     }
     private void Update()
     {
@@ -35,10 +35,9 @@ public class lightsPuzzle : MonoBehaviour
     {
         if (Panel.activeSelf)
         {
-            for (int i = 0; i < lights.Length; i++)
-            {
-                lights[i].SetActive(true);
-            }
+            lights[2].SetActive(true);
+            lights[1].SetActive(false);
+            lights[0].SetActive(false);
 
             for (int i = 0; i < platforms.Length; i++)
             {
@@ -49,13 +48,14 @@ public class lightsPuzzle : MonoBehaviour
 
     IEnumerator LightsControl()
     {
-        while (!Panel.activeSelf)
+        while (playerInRoom && !Panel.activeSelf)
         {
             yield return Lights1(light1Duration);
             yield return Lights2(light2Duration);
             yield return Lights3(light3Duration);
         }
     }
+
     IEnumerator Lights1(float duration)
     {
         lights[0].SetActive(true);
@@ -88,9 +88,21 @@ public class lightsPuzzle : MonoBehaviour
         platforms[3].SetActive(false);
         platforms[4].SetActive(false);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            playerRB.transform.position = playerStartPos;
+        {
+            playerInRoom = true;
+            StartCoroutine(LightsControl());
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInRoom = false;
+            StopCoroutine(LightsControl());
+        }
     }
 }

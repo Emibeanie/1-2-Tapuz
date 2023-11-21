@@ -10,6 +10,9 @@ public class playerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer[] sr;
     [SerializeField] Animator animator;
+    public AudioSource audioSource;
+    public AudioClip runSound;
+    public AudioClip landSound;
     public Transform feetPos;
     public LayerMask whatIsGround;
     
@@ -70,6 +73,7 @@ public class playerController : MonoBehaviour
             FaceMoveDirection();
         }
     }
+
     void FaceMoveDirection()
     {
         bool flipped = !isFacingRight;
@@ -115,12 +119,15 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
             animator.SetBool("IsJumping", false);
 
-        if(rb.velocity.y <= 0.3)
+        if (rb.velocity.y <= 0.3)
+        {
 
             foreach (SpriteRenderer renderer in sr)
             {
                 renderer.sortingLayerName = forwardJumpLayer;
             }
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -132,4 +139,15 @@ public class playerController : MonoBehaviour
             isGrounded = true;
         }
     }
+
+    //public void RunSound()
+    //{
+    //        audioSource.clip = runSound;
+    //        audioSource.Play();
+    //}
+    //public void LandSound()
+    //{
+    //    audioSource.clip = landSound;
+    //    audioSource.PlayOneShot(landSound);
+    //}
 }
