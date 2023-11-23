@@ -11,13 +11,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Door Control")]
     [SerializeField] GameObject[] shards;
-    [SerializeField] GameObject levelDoor;
+    [SerializeField] GameObject levelLockR;
+    [SerializeField] GameObject levelLockL;
 
-
+    private Vector2 lockR = new Vector2(13.4f, 47.215f);
+    private Vector2 lockL = new Vector2(2.67f, 47.215f);
     private void Start()
     {
         vaultDoor.SetActive(true);
-        levelDoor.SetActive(true);
     }
 
     private void Update()
@@ -49,6 +50,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Number of active shards: " + l);
 
         if (l == 3)
-            levelDoor.SetActive(false);
+            levelUnlock();
+    }
+
+    void levelUnlock()
+    {
+        levelLockR.transform.position = lockR;
+        levelLockL.transform.position = lockL;
     }
 }
