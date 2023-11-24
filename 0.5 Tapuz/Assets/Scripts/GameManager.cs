@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [Header("Vault Puzzle")]
     [SerializeField] GameObject[] correctSymbols;
     [SerializeField] Animator shardLockAnimator;
-
+    [SerializeField] Collider2D spikeLockCollider;
 
     [Header("Level Door Control")]
     [SerializeField] GameObject[] shards;
@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Number of active symbols: " + i);
 
         if (i == 3)
+        {
             shardLockAnimator.SetBool("Open", true);
+            spikeLockCollider.enabled = false;
+
+        }
     }
     private void LevelDoor()
     {
