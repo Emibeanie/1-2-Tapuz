@@ -1,0 +1,678 @@
+fileFormatVersion: 2
+guid: 94417100468783344876ac8cd9da5bd4
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Foreground01_BlackElements
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 10248
+      y: 4328
+      width: 2851
+      height: 1891
+    spriteID: 7adbd6fb8959a7846b52a97281a6aa54
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 10248, y: 4328}
+    spritePosition: {x: 6868, y: 3376}
+  - name: Foreground02_Chains
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 10248
+      y: 4
+      width: 4224
+      height: 3432
+    spriteID: 95b5d7565ab4c954da03468128e541de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 10248, y: 4}
+    spritePosition: {x: 7123, y: 4168}
+  - name: Light_Plat05
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 13107
+      y: 4398
+      width: 547
+      height: 72
+    spriteID: 1c70ff6a6887f884a8a446e664dba0b5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 13107, y: 4398}
+    spritePosition: {x: 11477, y: 4151}
+  - name: Light_Plat04
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 13918
+      y: 4398
+      width: 109
+      height: 71
+    spriteID: fb6a5b0dab3cedb47baa9b65625e68a3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 13918, y: 4398}
+    spritePosition: {x: 11153, y: 4308}
+  - name: Light_Plat03
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 14480
+      y: 4
+      width: 112
+      height: 842
+    spriteID: 6cf97efa444d7304bb0d1795155096a5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 14480, y: 4}
+    spritePosition: {x: 10835, y: 3382}
+  - name: Light_Plat02
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 13662
+      y: 4398
+      width: 248
+      height: 70
+    spriteID: e27d0fd36767a6a4f9e9d57cb355f883
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 13662, y: 4398}
+    spritePosition: {x: 10293, y: 4150}
+  - name: Light_Plat01
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 14600
+      y: 4
+      width: 115
+      height: 760
+    spriteID: 344110140b91f7248aec7088fef364f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 14600, y: 4}
+    spritePosition: {x: 9943, y: 3376}
+  - name: LevelLock_HolderFront
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 13107
+      y: 4328
+      width: 797
+      height: 62
+    spriteID: bb85a278a8b6b4d4a8aea762c96308a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 13107, y: 4328}
+    spritePosition: {x: 8598, y: 4692}
+  - name: LevelLock_SpikeR
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 14716
+      y: 4328
+      width: 362
+      height: 59
+    spriteID: c29c93d9b0ce1ad478f4849d53730080
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 14716, y: 4328}
+    spritePosition: {x: 9028, y: 4692}
+  - name: LevelLock_SpikeL
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 15086
+      y: 4328
+      width: 362
+      height: 59
+    spriteID: d8536ea9371d85c42909b65fe556f8eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 15086, y: 4328}
+    spritePosition: {x: 8605, y: 4692}
+  - name: LevelLock_HolderBack
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 13912
+      y: 4328
+      width: 796
+      height: 62
+    spriteID: aae7acc86d8b8a24581248df92254d3a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 13912, y: 4328}
+    spritePosition: {x: 8598, y: 4692}
+  - name: Chained_Plat01
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 13107
+      y: 4478
+      width: 263
+      height: 83
+    spriteID: d20731a482e8abb4fa50a50592749e73
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 13107, y: 4478}
+    spritePosition: {x: 7201, y: 4167}
+  - name: Floor+Walls
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 10236
+      height: 4316
+    spriteID: 010c175b5aba57f40afcda025ef4655e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 1796, y: 3376}
+  - name: Platforms
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6966
+      y: 8652
+      width: 7878
+      height: 3482
+    spriteID: b7cc193d6420fe04f9c17dc8f7a0388d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 6966, y: 8652}
+    spritePosition: {x: 1844, y: 3729}
+  - name: Pipes + Chains
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 8652
+      width: 6954
+      height: 4228
+    spriteID: a63c54dd05d9f2545b28275432e30ebe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 8652}
+    spritePosition: {x: 4337, y: 3376}
+  - name: Base_Layer
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4328
+      width: 10236
+      height: 4316
+    spriteID: d3b6aee411a4ee74f8271856226522b6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4328}
+    spritePosition: {x: 1796, y: 3376}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Foreground01_BlackElements
+    spriteName: Foreground01_BlackElements
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7adbd6fb8959a7846b52a97281a6aa54
+    layerID: 871
+    mosaicPosition: {x: 10248, y: 4328}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Foreground02_Chains
+    spriteName: Foreground02_Chains
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 95b5d7565ab4c954da03468128e541de
+    layerID: 874
+    mosaicPosition: {x: 10248, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Light_Plat05
+    spriteName: Light_Plat05
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1c70ff6a6887f884a8a446e664dba0b5
+    layerID: 869
+    mosaicPosition: {x: 13107, y: 4398}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Light_Plat04
+    spriteName: Light_Plat04
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fb6a5b0dab3cedb47baa9b65625e68a3
+    layerID: 868
+    mosaicPosition: {x: 13918, y: 4398}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Light_Plat03
+    spriteName: Light_Plat03
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6cf97efa444d7304bb0d1795155096a5
+    layerID: 867
+    mosaicPosition: {x: 14480, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Light_Plat02
+    spriteName: Light_Plat02
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e27d0fd36767a6a4f9e9d57cb355f883
+    layerID: 866
+    mosaicPosition: {x: 13662, y: 4398}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Light_Plat01
+    spriteName: Light_Plat01
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 344110140b91f7248aec7088fef364f0
+    layerID: 865
+    mosaicPosition: {x: 14600, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: LevelLock_HolderFront
+    spriteName: LevelLock_HolderFront
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bb85a278a8b6b4d4a8aea762c96308a4
+    layerID: 917
+    mosaicPosition: {x: 13107, y: 4328}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: LevelLock_SpikeR
+    spriteName: LevelLock_SpikeR
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c29c93d9b0ce1ad478f4849d53730080
+    layerID: 920
+    mosaicPosition: {x: 14716, y: 4328}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: LevelLock_SpikeL
+    spriteName: LevelLock_SpikeL
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d8536ea9371d85c42909b65fe556f8eb
+    layerID: 922
+    mosaicPosition: {x: 15086, y: 4328}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: LevelLock_HolderBack
+    spriteName: LevelLock_HolderBack
+    isGroup: 0
+    parentIndex: -1
+    spriteID: aae7acc86d8b8a24581248df92254d3a
+    layerID: 918
+    mosaicPosition: {x: 13912, y: 4328}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Chained_Plat01
+    spriteName: Chained_Plat01
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d20731a482e8abb4fa50a50592749e73
+    layerID: 851
+    mosaicPosition: {x: 13107, y: 4478}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Floor+Walls
+    spriteName: Floor+Walls
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 010c175b5aba57f40afcda025ef4655e
+    layerID: 818
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Platforms
+    spriteName: Platforms
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b7cc193d6420fe04f9c17dc8f7a0388d
+    layerID: 822
+    mosaicPosition: {x: 6966, y: 8652}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Pipes + Chains
+    spriteName: Pipes + Chains
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a63c54dd05d9f2545b28275432e30ebe
+    layerID: 942
+    mosaicPosition: {x: 4, y: 8652}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Base_Layer
+    spriteName: Base_Layer
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d3b6aee411a4ee74f8271856226522b6
+    layerID: 797
+    mosaicPosition: {x: 4, y: 4328}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
