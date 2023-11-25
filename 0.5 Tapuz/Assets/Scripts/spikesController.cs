@@ -6,6 +6,7 @@ public class spikesController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D playerRB;
+    [SerializeField] AudioSource audioSource;
 
     [Header("Physics")]
     public float upTime;
@@ -32,7 +33,10 @@ public class spikesController : MonoBehaviour
     {
         spikesUp = !spikesUp;
         if (spikesUp)
+        {
             StartCoroutine(MoveSpike(initialPosition + new Vector2(0, moveSpace), upTime, currentUpMoveSpeed));
+            audioSource.Play();
+        }
         else
             StartCoroutine(MoveSpike(initialPosition, downTime, downMoveSpeed));
 
