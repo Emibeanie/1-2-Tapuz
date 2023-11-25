@@ -48,11 +48,17 @@ TagManager:
   - name: BG
     uniqueID: 6082511
     locked: 0
+  - name: LightBlock
+    uniqueID: 3641163923
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Platforms
     uniqueID: 2795164401
+    locked: 0
+  - name: Celling
+    uniqueID: 4281622127
     locked: 0
   - name: Player
     uniqueID: 1959179079
