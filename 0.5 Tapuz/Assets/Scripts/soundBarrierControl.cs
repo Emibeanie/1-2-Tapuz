@@ -13,7 +13,7 @@ public class soundBarrierControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
             for (int i = 0; i < audioSource.Length; i++)
@@ -21,8 +21,7 @@ public class soundBarrierControl : MonoBehaviour
                 audioSource[i].enabled = true;
             }
     }
-    
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
             for (int i = 0; i < audioSource.Length; i++)
