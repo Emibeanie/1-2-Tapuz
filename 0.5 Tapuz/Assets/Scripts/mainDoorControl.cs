@@ -8,6 +8,7 @@ public class mainDoorControl : MonoBehaviour
     [Header("Components")]
     [SerializeField] GameObject[] shards;
     [SerializeField] GameObject panel;
+    [SerializeField] AudioSource doorAudioSource;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,7 +31,10 @@ public class mainDoorControl : MonoBehaviour
         Debug.Log("Number of active symbols: " + i);
 
         if (i == 4)
+        {
+            doorAudioSource.Play();
             panel.SetActive(true);
+        }
         else
             Debug.Log("door is closed");
     }

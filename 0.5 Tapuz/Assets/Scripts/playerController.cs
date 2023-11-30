@@ -24,10 +24,10 @@ public class playerController : MonoBehaviour
 
     private string backJumpLayer = "Default";
     private string forwardJumpLayer = "Player";
-    private float jumpPressedRememberTime = 0.2f;
+    public float jumpPressedRememberTime = 0.2f;
     private float jumpPressedRemember;
     private float groundedRemember;
-    public float groundedRememberTime;
+    public float groundedRememberTime = 0.2f;
     public float cutJumpHeight;
     private bool isGrounded;
     private bool isFacingRight = true;
@@ -92,9 +92,22 @@ public class playerController : MonoBehaviour
 
         jumpPressedRemember -= Time.deltaTime;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")) //coyote time jump
+        {
             jumpPressedRemember = jumpPressedRememberTime;
 
+            if (groundedRemember > 0 && jumpPressedRemember > 0)
+            {
+                animator.SetBool("IsJumping", true);
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+                foreach (SpriteRenderer renderer in sr)
+                {
+                    renderer.sortingLayerName = backJumpLayer;
+                }
+            }
+        }
+       
         if(isGrounded)
             if (Input.GetButtonDown("Jump"))
             {
@@ -109,7 +122,7 @@ public class playerController : MonoBehaviour
             }
 
         if (Input.GetButtonUp("Jump"))
-            if (rb.velocity.y > 0)
+            if (rb.velocity.y > 0.01f)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
                 animator.SetBool("IsJumping", false);

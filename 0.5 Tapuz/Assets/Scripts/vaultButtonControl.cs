@@ -6,6 +6,7 @@ public class vaultButtonControl : MonoBehaviour
 {
     [SerializeField] GameObject[] symbols;
     [SerializeField] SpriteRenderer activeGlow;
+    [SerializeField] AudioSource audioSource;
     private int currentSymbolIndex = 0;
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -15,6 +16,8 @@ public class vaultButtonControl : MonoBehaviour
 
             if (hitPos.normal.x == 0.00 && hitPos.normal.y == -1.00)
             {
+                audioSource.Play();
+
                 //turn prev off
                 symbols[currentSymbolIndex].SetActive(false);
 

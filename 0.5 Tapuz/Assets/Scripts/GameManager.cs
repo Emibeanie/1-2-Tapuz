@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Game Components")]
+    [SerializeField] AudioSource ambienceAudioSource;
+    [SerializeField] AudioClip ambienceStart;
+    [SerializeField] AudioClip ambienceLoop;
+
     [Header("Vault Puzzle")]
     [SerializeField] GameObject[] correctSymbols;
     [SerializeField] Animator shardLockAnimator;
@@ -13,6 +18,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] shards;
     [SerializeField] Animator levelLockAnimator;
 
+    private void Start()
+    {
+        StartCoroutine(ambienceControl());
+    }
     private void Update()
     {
         VaultDoor();
@@ -32,7 +41,6 @@ public class GameManager : MonoBehaviour
         {
             shardLockAnimator.SetBool("Open", true);
             spikeLockCollider.enabled = false;
-
         }
     }
     private void LevelDoor()
@@ -47,5 +55,16 @@ public class GameManager : MonoBehaviour
 
         if (l == 3)
             levelLockAnimator.SetBool("Open", true);
+    }
+
+    IEnumerator ambienceControl()
+    {
+        ambienceAudioSource.clip = ambienceStart;
+        ambienceAudioSource.Play();
+
+        yield return new WaitForSeconds(ambienceAudioSource.clip.length);
+
+        ambienceAudioSource.clip = ambienceLoop;
+        ambienceAudioSource.Play();
     }
 }
