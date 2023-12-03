@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip runSound;
     public AudioClip landSound;
+    public AudioClip jumpSound;
     public Transform feetPos;
     public LayerMask whatIsGround;
     
@@ -52,6 +53,8 @@ public class playerController : MonoBehaviour
         {
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsIdle", false);
+            //audioSource.clip = runSound;       ----------------- runnig sound ?!
+            //audioSource.Play();
         }
         else
         {
@@ -99,6 +102,7 @@ public class playerController : MonoBehaviour
             if (groundedRemember > 0 && jumpPressedRemember > 0)
             {
                 animator.SetBool("IsJumping", true);
+                audioSource.PlayOneShot(jumpSound);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
                 foreach (SpriteRenderer renderer in sr)
@@ -112,7 +116,7 @@ public class playerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 animator.SetBool("IsJumping", true);
-                
+                audioSource.PlayOneShot(jumpSound);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
                 foreach (SpriteRenderer renderer in sr)
@@ -140,6 +144,7 @@ public class playerController : MonoBehaviour
                 renderer.sortingLayerName = forwardJumpLayer;
             }
 
+           // audioSource.PlayOneShot(landSound);
         }
     }
 
@@ -153,11 +158,6 @@ public class playerController : MonoBehaviour
         }
     }
 
-    //public void RunSound()
-    //{
-    //        audioSource.clip = runSound;
-    //        audioSource.Play();
-    //}
     //public void LandSound()
     //{
     //    audioSource.clip = landSound;
