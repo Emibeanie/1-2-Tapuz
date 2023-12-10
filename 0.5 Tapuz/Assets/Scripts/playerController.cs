@@ -7,32 +7,41 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer[] sr;
-    [SerializeField] Animator animator;
-    public AudioSource audioSource;
     public AudioClip runSound;
     public AudioClip landSound;
     public AudioClip jumpSound;
     public Transform feetPos;
     public LayerMask whatIsGround;
-    
-    [Header("Physics")]
-    public float moveSpeed;
-    public float jumpForce;
-    public float checkRadius = 2f;
-    private float moveInput;
-
+    private Rigidbody2D rb;
+    private Animator animator;
+    private AudioSource audioSource;
     private string backJumpLayer = "Default";
     private string forwardJumpLayer = "Player";
-    public float jumpPressedRememberTime = 0.2f;
-    private float jumpPressedRemember;
-    private float groundedRemember;
-    public float groundedRememberTime = 0.2f;
-    public float cutJumpHeight;
-    private bool isGrounded;
+
+    [Header("Movement")]
+    public float moveSpeed;
+    private float moveInput;
     private bool isFacingRight = true;
 
+    [Header("Jump")]
+    public float jumpForce;
+    public float upDrag;
+    public float downDrag;
+    public float reguDrag;
+    //public float coyoteTime = 0.2f;
+    //private float lastTimeGrounded;
+    //private bool canJump = true;
+    private float checkRadius = 0.2f;
+    public float cutJumpHeight = 0.5f;
+    private bool isGrounded;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
     void Update()
     {
         Movement();
@@ -53,8 +62,6 @@ public class playerController : MonoBehaviour
         {
             animator.SetBool("IsRunning", true);
             animator.SetBool("IsIdle", false);
-            //audioSource.clip = runSound;       ----------------- runnig sound ?!
-            //audioSource.Play();
         }
         else
         {
@@ -88,35 +95,15 @@ public class playerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         animator.SetBool("IsGrounded", isGrounded);
 
-        groundedRemember -= Time.deltaTime;
-
         if (isGrounded)
-            groundedRemember = groundedRememberTime;
-
-        jumpPressedRemember -= Time.deltaTime;
-
-        if (Input.GetButtonDown("Jump")) //coyote time jump
         {
-            jumpPressedRemember = jumpPressedRememberTime;
-
-            if (groundedRemember > 0 && jumpPressedRemember > 0)
+            if (Input.GetButtonDown("Jump")) //jump
             {
+                rb.gravityScale = upDrag; // gravity fix
+
                 animator.SetBool("IsJumping", true);
                 audioSource.PlayOneShot(jumpSound);
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-                foreach (SpriteRenderer renderer in sr)
-                {
-                    renderer.sortingLayerName = backJumpLayer;
-                }
-            }
-        }
-       
-        if(isGrounded)
-            if (Input.GetButtonDown("Jump"))
-            {
-                animator.SetBool("IsJumping", true);
-                audioSource.PlayOneShot(jumpSound);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
                 foreach (SpriteRenderer renderer in sr)
@@ -125,27 +112,45 @@ public class playerController : MonoBehaviour
                 }
             }
 
-        if (Input.GetButtonUp("Jump"))
-            if (rb.velocity.y > 0.01f)
+            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0.01f) //cut jump on button release
             {
+                rb.gravityScale = downDrag; // gravity fix
+
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
                 animator.SetBool("IsJumping", false);
+
+                foreach (SpriteRenderer renderer in sr)
+                {
+                    renderer.sortingLayerName = forwardJumpLayer;
+                }
             }
-        
-
-        if (Input.GetButtonUp("Jump"))
-            animator.SetBool("IsJumping", false);
-
-        if (rb.velocity.y <= 0.3)
-        {
-
-            foreach (SpriteRenderer renderer in sr)
-            {
-                renderer.sortingLayerName = forwardJumpLayer;
-            }
-
-           // audioSource.PlayOneShot(landSound);
         }
+
+
+        //if (Input.GetButtonDown("Jump") && canJump)
+        //{
+        //    animator.SetBool("IsJumping", true);
+        //    audioSource.PlayOneShot(jumpSound);
+        //    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        //    foreach (SpriteRenderer renderer in sr)
+        //    {
+        //        renderer.sortingLayerName = backJumpLayer;
+        //    }
+
+        //    canJump = false;
+        //}
+
+        //if (Input.GetButtonUp("Jump") && rb.velocity.y > 0.01f)
+        //{
+        //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
+        //    animator.SetBool("IsJumping", false);
+
+        //    foreach (SpriteRenderer renderer in sr)
+        //    {
+        //        renderer.sortingLayerName = forwardJumpLayer;
+        //    }
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -155,12 +160,7 @@ public class playerController : MonoBehaviour
             Debug.Log("DETECTEDDDDDD");
             animator.SetBool("IsJumping", false);
             isGrounded = true;
+            rb.drag = reguDrag;
         }
     }
-
-    //public void LandSound()
-    //{
-    //    audioSource.clip = landSound;
-    //    audioSource.PlayOneShot(landSound);
-    //}
 }
