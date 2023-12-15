@@ -16,11 +16,10 @@ public class lightsPuzzle : MonoBehaviour
     [Header("Platforms")]
     [SerializeField] GameObject[] platforms;
 
-    public float light1Duration;
-    public float light2Duration;
-    public float light3Duration;
-
-    private bool playerInRoom = false;
+    private float _light1Duration = 1.3f;
+    private float _light2Duration = 1.3f;
+    private float _light3Duration = 1.3f;
+    private bool _playerInRoom = false;
 
     void Start()
     {
@@ -48,11 +47,11 @@ public class lightsPuzzle : MonoBehaviour
 
     IEnumerator LightsControl()
     {
-        while (playerInRoom && !Panel.activeSelf)
+        while (_playerInRoom && !Panel.activeSelf)
         {
-            yield return Lights1(light1Duration);
-            yield return Lights2(light2Duration);
-            yield return Lights3(light3Duration);
+            yield return Lights1(_light1Duration);
+            yield return Lights2(_light2Duration);
+            yield return Lights3(_light3Duration);
         }
     }
 
@@ -93,7 +92,7 @@ public class lightsPuzzle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerInRoom = true;
+            _playerInRoom = true;
             StartCoroutine(LightsControl());
         }
     }
@@ -101,7 +100,7 @@ public class lightsPuzzle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerInRoom = false;
+            _playerInRoom = false;
             StopCoroutine(LightsControl());
         }
     }

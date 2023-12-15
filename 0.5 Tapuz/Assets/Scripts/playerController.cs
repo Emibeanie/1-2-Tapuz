@@ -7,150 +7,141 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] SpriteRenderer[] sr;
+    [SerializeField] SpriteRenderer[] spriteRenderers;
     public AudioClip runSound;
     public AudioClip landSound;
     public AudioClip jumpSound;
     public Transform feetPos;
     public LayerMask whatIsGround;
-    private Rigidbody2D rb;
-    private Animator animator;
-    private AudioSource audioSource;
-    private string backJumpLayer = "Default";
-    private string forwardJumpLayer = "Player";
+    private Rigidbody2D _rb;
+    private Animator _animator;
+    private AudioSource _audioSource;
+    private string _backJumpLayer = "Default";
+    private string _forwardJumpLayer = "Player";
 
     [Header("Movement")]
     public float moveSpeed;
-    private float moveInput;
-    private bool isFacingRight = true;
+    private float _moveInput;
+    private bool _isFacingRight = true;
 
     [Header("Jump")]
     public float jumpForce;
-    public float upDrag;
-    public float downDrag;
-    public float reguDrag;
-    //public float coyoteTime = 0.2f;
-    //private float lastTimeGrounded;
-    //private bool canJump = true;
-    private float checkRadius = 0.2f;
-    public float cutJumpHeight = 0.5f;
-    private bool isGrounded;
+    
+    private float _upGravityMultiplier = -40f;
+    private float _downGravityMultiplier = -90f;
+    private float _checkRadius = 0.2f;
+    private float _cutJumpHeight = 0.5f;
+    private bool _isGrounded;
+
+    public float jumpButtonGracePeriod;
+    private float? lastGroundedTime;
+    private float? jumpButtonPressedTime;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
         Movement();
         FaceMoveDirection();
         Jump();
+        ApplyGravity();
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        _rb.velocity = new Vector2(_moveInput * moveSpeed, _rb.velocity.y);
     }
 
     void Movement()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        _moveInput = Input.GetAxisRaw("Horizontal");
 
-        if (moveInput != 0)
+        if (_moveInput != 0)
         {
-            animator.SetBool("IsRunning", true);
-            animator.SetBool("IsIdle", false);
+            _animator.SetBool("IsRunning", true);
+            _animator.SetBool("IsIdle", false);
         }
         else
         {
-            if (isGrounded)
+            if (_isGrounded)
             {
-                animator.SetBool("IsRunning", false);
-                animator.SetBool("IsIdle", true);
+                _animator.SetBool("IsRunning", false);
+                _animator.SetBool("IsIdle", true);
             }
         }
 
-        if (moveInput > 0 && !isFacingRight)
+        if (_moveInput > 0 && !_isFacingRight)
         {
-            isFacingRight = true;
+            _isFacingRight = true;
             FaceMoveDirection();
         }
-        else if (moveInput < 0 && isFacingRight)
+        else if (_moveInput < 0 && _isFacingRight)
         {
-            isFacingRight = false;
+            _isFacingRight = false;
             FaceMoveDirection();
         }
-    }
-
-    void FaceMoveDirection()
-    {
-        bool flipped = !isFacingRight;
-        transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
     }
 
     void Jump()
     {
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-        animator.SetBool("IsGrounded", isGrounded);
+        _isGrounded = Physics2D.OverlapCircle(feetPos.position, _checkRadius, whatIsGround);
+        _animator.SetBool("IsGrounded", _isGrounded);
 
-        if (isGrounded)
+        if (_isGrounded)
+            lastGroundedTime = Time.time;
+    
+        if(Input.GetButtonDown("Jump"))
+            jumpButtonPressedTime = Time.time;
+
+        if (Input.GetButtonDown("Jump") && Time.time - lastGroundedTime <= jumpButtonGracePeriod) //jump
         {
-            if (Input.GetButtonDown("Jump")) //jump
+            if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
             {
-                rb.gravityScale = upDrag; // gravity fix
+                _animator.SetBool("IsJumping", true);
+                _audioSource.PlayOneShot(jumpSound);
 
-                animator.SetBool("IsJumping", true);
-                audioSource.PlayOneShot(jumpSound);
+                _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                foreach (SpriteRenderer renderer in spriteRenderers)
+                    renderer.sortingLayerName = _backJumpLayer;
 
-                foreach (SpriteRenderer renderer in sr)
-                {
-                    renderer.sortingLayerName = backJumpLayer;
-                }
-            }
-
-            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0.01f) //cut jump on button release
-            {
-                rb.gravityScale = downDrag; // gravity fix
-
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
-                animator.SetBool("IsJumping", false);
-
-                foreach (SpriteRenderer renderer in sr)
-                {
-                    renderer.sortingLayerName = forwardJumpLayer;
-                }
+                jumpButtonPressedTime = null;
+                lastGroundedTime = null;
             }
         }
 
+        if (Input.GetButtonUp("Jump") && _rb.velocity.y > 0.01f) //cut jump on button release
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _cutJumpHeight);
+            _animator.SetBool("IsJumping", false);
 
-        //if (Input.GetButtonDown("Jump") && canJump)
-        //{
-        //    animator.SetBool("IsJumping", true);
-        //    audioSource.PlayOneShot(jumpSound);
-        //    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            foreach (SpriteRenderer renderer in spriteRenderers)
+                renderer.sortingLayerName = _forwardJumpLayer;
 
-        //    foreach (SpriteRenderer renderer in sr)
-        //    {
-        //        renderer.sortingLayerName = backJumpLayer;
-        //    }
+            jumpButtonPressedTime = null;
+            lastGroundedTime = null;
+        }
+    }
+    void FaceMoveDirection()
+    {
+        bool flipped = !_isFacingRight;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
+    }
 
-        //    canJump = false;
-        //}
+    private void ApplyGravity()
+    {
+        if (_isGrounded && _rb.velocity.y <= 0.01f)
+            _rb.velocity = new Vector2(_rb.velocity.x, -1.0f);
 
-        //if (Input.GetButtonUp("Jump") && rb.velocity.y > 0.01f)
-        //{
-        //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
-        //    animator.SetBool("IsJumping", false);
+        else if(!_isGrounded && _rb.velocity.y < 0.01f)
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + (_downGravityMultiplier * Time.deltaTime));
 
-        //    foreach (SpriteRenderer renderer in sr)
-        //    {
-        //        renderer.sortingLayerName = forwardJumpLayer;
-        //    }
-        //}
+        else
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + (_upGravityMultiplier * Time.deltaTime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -158,9 +149,8 @@ public class playerController : MonoBehaviour
         if(collision.transform.CompareTag("Ground"))
         {
             Debug.Log("DETECTEDDDDDD");
-            animator.SetBool("IsJumping", false);
-            isGrounded = true;
-            rb.drag = reguDrag;
+            _animator.SetBool("IsJumping", false);
+            _isGrounded = true;
         }
     }
 }

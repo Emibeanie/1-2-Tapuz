@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ambienceControl());
+        StartCoroutine(AmbienceControl());
     }
     private void Update()
     {
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             levelLockAnimator.SetBool("Open", true);
     }
 
-    IEnumerator ambienceControl()
+    IEnumerator AmbienceControl()
     {
         ambienceAudioSource.clip = ambienceStart;
         ambienceAudioSource.Play();

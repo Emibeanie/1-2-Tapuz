@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class chainedPlat : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] Animator anim;
+    private AudioSource _audioSource;
+    private Animator _anim;
 
+    private void Start()
+    {
+        _anim = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             
-            anim.SetBool("Move", true);
-            audioSource.Play();
+            _anim.SetBool("Move", true);
+            _audioSource.Play();
 
         }
     }
@@ -21,7 +26,7 @@ public class chainedPlat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            anim.SetBool("Move", false);
+            _anim.SetBool("Move", false);
         }
     }
 }
