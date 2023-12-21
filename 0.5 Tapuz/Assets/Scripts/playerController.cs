@@ -26,16 +26,12 @@ public class playerController : MonoBehaviour
 
     [Header("Jump")]
     public float jumpForce;
-    
+    public float coyoteTimer;
     private float _upGravityMultiplier = -40f;
     private float _downGravityMultiplier = -90f;
     private float _checkRadius = 0.2f;
     private float _cutJumpHeight = 0.5f;
     private bool _isGrounded;
-
-    public float jumpButtonGracePeriod;
-    private float? lastGroundedTime;
-    private float? jumpButtonPressedTime;
 
     private void Awake()
     {
@@ -92,14 +88,8 @@ public class playerController : MonoBehaviour
         _animator.SetBool("IsGrounded", _isGrounded);
 
         if (_isGrounded)
-            lastGroundedTime = Time.time;
-    
-        if(Input.GetButtonDown("Jump"))
-            jumpButtonPressedTime = Time.time;
-
-        if (Input.GetButtonDown("Jump") && Time.time - lastGroundedTime <= jumpButtonGracePeriod) //jump
         {
-            if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
+            if (Input.GetButtonDown("Jump")) //jump
             {
                 _animator.SetBool("IsJumping", true);
                 _audioSource.PlayOneShot(jumpSound);
@@ -109,8 +99,6 @@ public class playerController : MonoBehaviour
                 foreach (SpriteRenderer renderer in spriteRenderers)
                     renderer.sortingLayerName = _backJumpLayer;
 
-                jumpButtonPressedTime = null;
-                lastGroundedTime = null;
             }
         }
 
@@ -122,11 +110,9 @@ public class playerController : MonoBehaviour
             foreach (SpriteRenderer renderer in spriteRenderers)
                 renderer.sortingLayerName = _forwardJumpLayer;
 
-            jumpButtonPressedTime = null;
-            lastGroundedTime = null;
         }
     }
-    void FaceMoveDirection()
+    private void FaceMoveDirection()
     {
         bool flipped = !_isFacingRight;
         transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
@@ -144,13 +130,19 @@ public class playerController : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + (_upGravityMultiplier * Time.deltaTime));
     }
 
+    IEnumerator CoyoteJump()
+    {
+        yield return new WaitForSeconds(coyoteTimer);
+        _isGrounded = true;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.CompareTag("Ground"))
         {
             Debug.Log("DETECTEDDDDDD");
             _animator.SetBool("IsJumping", false);
-            _isGrounded = true;
+            StartCoroutine(CoyoteJump());
         }
     }
 }
