@@ -16,7 +16,7 @@ public class bigSpikesController : MonoBehaviour
     public float maxUpMoveSpeed;
     public float downMoveSpeed;
 
-    public Vector2 playerStartPos;
+    private Vector2 playerStartPos;
     public Vector2 ElevatorStartPos;
     private Vector2 initialPosition;
     private bool spikesUp = false;
@@ -66,7 +66,12 @@ public class bigSpikesController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
+            playerStartPos = new Vector2(-27.16f, 1.12f);
             playerRB.transform.position = playerStartPos;
             Elevator.transform.position = ElevatorStartPos;
+            Debug.Log("Player start position: " + playerStartPos);
+            Debug.Log("Player position after respawn: " + playerRB.transform.position);
+        }
     }
 }

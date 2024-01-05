@@ -16,7 +16,7 @@ public class playerController : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator _animator;
     private AudioSource _audioSource;
-    private string _backJumpLayer = "Default";
+    private string _backJumpLayer = "PlayerJumpBack";
     private string _forwardJumpLayer = "Player";
 
     [Header("Movement")]
@@ -39,6 +39,7 @@ public class playerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
     }
+
     void Update()
     {
         Movement();
@@ -84,6 +85,9 @@ public class playerController : MonoBehaviour
 
     void Jump()
     {
+        if(_rb.velocity.y > 0.01f)
+            _animator.SetBool("IsJumping", false);
+
         _isGrounded = Physics2D.OverlapCircle(feetPos.position, _checkRadius, whatIsGround);
         _animator.SetBool("IsGrounded", _isGrounded);
 
@@ -98,7 +102,6 @@ public class playerController : MonoBehaviour
 
                 foreach (SpriteRenderer renderer in spriteRenderers)
                     renderer.sortingLayerName = _backJumpLayer;
-
             }
         }
 
@@ -130,19 +133,19 @@ public class playerController : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + (_upGravityMultiplier * Time.deltaTime));
     }
 
-    IEnumerator CoyoteJump()
-    {
-        yield return new WaitForSeconds(coyoteTimer);
-        _isGrounded = true;
-    }
+    //IEnumerator CoyoteJump()
+    //{
+    //    yield return new WaitForSeconds(coyoteTimer);
+    //    _isGrounded = true;
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.CompareTag("Ground"))
         {
             Debug.Log("DETECTEDDDDDD");
-            _animator.SetBool("IsJumping", false);
-            StartCoroutine(CoyoteJump());
+            _animator.SetBool("IsIdle", true);
+           // StartCoroutine(CoyoteJump());
         }
     }
 }

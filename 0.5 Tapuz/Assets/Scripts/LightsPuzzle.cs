@@ -9,6 +9,7 @@ public class lightsPuzzle : MonoBehaviour
     [SerializeField] Rigidbody2D playerRB;
     [SerializeField] Vector2 playerStartPos;
     [SerializeField] GameObject Panel;
+    [SerializeField] GameObject shardSymbol;
 
     [Header("Lights")]
     [SerializeField] GameObject[] lights;
@@ -32,7 +33,7 @@ public class lightsPuzzle : MonoBehaviour
     }
     void LightsActive()
     {
-        if (Panel.activeSelf)
+        if (Panel.activeSelf || shardSymbol.activeSelf)
         {
             lights[2].SetActive(true);
             lights[1].SetActive(false);
@@ -47,7 +48,7 @@ public class lightsPuzzle : MonoBehaviour
 
     IEnumerator LightsControl()
     {
-        while (_playerInRoom && !Panel.activeSelf)
+        while (_playerInRoom && !shardSymbol.activeSelf)
         {
             yield return Lights1(_light1Duration);
             yield return Lights2(_light2Duration);

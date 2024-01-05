@@ -8,13 +8,13 @@ public class shardsController : MonoBehaviour
     [SerializeField] GameObject ShardSprite;
     [SerializeField] GameObject SymbolSprite;
     [SerializeField] GameObject LockShardActive;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip startSound;
-    [SerializeField] AudioClip loopSound;
+    //[SerializeField] AudioSource audioSource;
+    //[SerializeField] AudioClip startSound;
+    //[SerializeField] AudioClip loopSound;
 
     private void Start()
     {
-        StartCoroutine(shardSound());
+        //StartCoroutine(shardSound());
     }
 
     private void Update()
@@ -36,14 +36,14 @@ public class shardsController : MonoBehaviour
         SymbolSprite.SetActive(true); 
         LockShardActive.SetActive(true);
     }
-    IEnumerator shardSound()
-    {
-        audioSource.clip = startSound;
-        audioSource.Play();
+    //IEnumerator shardSound()
+    //{
+    //    audioSource.clip = startSound;
+    //    audioSource.Play();
 
-        yield return new WaitForSeconds(audioSource.clip.length);
+    //    yield return new WaitForSeconds(audioSource.clip.length);
 
-        audioSource.clip = loopSound;
-        audioSource.Play();
-    }
+    //    audioSource.clip = loopSound;
+    //    audioSource.Play();
+    //}
 }

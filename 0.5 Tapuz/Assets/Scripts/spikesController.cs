@@ -7,6 +7,9 @@ public class spikesController : MonoBehaviour
     [Header("Components")]
     [SerializeField] Rigidbody2D playerRB;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip spikesSound;
+    [SerializeField] AudioClip[] dyingSound;
+    private AudioClip ranDyingSound;
 
     [Header("Physics")]
     public float upTime;
@@ -35,6 +38,7 @@ public class spikesController : MonoBehaviour
         if (spikesUp)
         {
             StartCoroutine(MoveSpike(initialPosition + new Vector2(0, moveSpace), upTime, currentUpMoveSpeed));
+            audioSource.clip = spikesSound;
             audioSource.Play();
         }
         else
@@ -69,6 +73,19 @@ public class spikesController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
+            RandomDeath();
             playerRB.transform.position = playerStartPos;
+            
+        }
+    }
+
+    void RandomDeath()
+    {
+        int index = Random.Range(0, dyingSound.Length);
+        ranDyingSound = dyingSound[index];
+
+        audioSource.clip = ranDyingSound;
+        audioSource.Play();
     }
 }
