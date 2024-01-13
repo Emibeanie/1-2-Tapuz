@@ -26,12 +26,13 @@ public class playerController : MonoBehaviour
 
     [Header("Jump")]
     public float jumpForce;
-    public float coyoteTimer;
     private float _upGravityMultiplier = -40f;
     private float _downGravityMultiplier = -90f;
     private float _checkRadius = 0.2f;
     private float _cutJumpHeight = 0.5f;
     private bool _isGrounded;
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
 
     private void Awake()
     {
@@ -91,7 +92,7 @@ public class playerController : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(feetPos.position, _checkRadius, whatIsGround);
         _animator.SetBool("IsGrounded", _isGrounded);
 
-        if (_isGrounded)
+        if (_isGrounded || coyoteTimeCounter > 0)
         {
             if (Input.GetButtonDown("Jump")) //jump
             {
@@ -102,6 +103,8 @@ public class playerController : MonoBehaviour
 
                 foreach (SpriteRenderer renderer in spriteRenderers)
                     renderer.sortingLayerName = _backJumpLayer;
+
+                coyoteTimeCounter = 0f; // coyote reset
             }
         }
 
@@ -114,6 +117,11 @@ public class playerController : MonoBehaviour
                 renderer.sortingLayerName = _forwardJumpLayer;
 
         }
+
+        if (!_isGrounded)
+            coyoteTimeCounter -= Time.deltaTime;
+        else
+            coyoteTimeCounter = coyoteTime;
     }
     private void FaceMoveDirection()
     {
@@ -133,19 +141,12 @@ public class playerController : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + (_upGravityMultiplier * Time.deltaTime));
     }
 
-    //IEnumerator CoyoteJump()
-    //{
-    //    yield return new WaitForSeconds(coyoteTimer);
-    //    _isGrounded = true;
-    //}
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.CompareTag("Ground"))
         {
             Debug.Log("DETECTEDDDDDD");
             _animator.SetBool("IsIdle", true);
-           // StartCoroutine(CoyoteJump());
         }
     }
 }
