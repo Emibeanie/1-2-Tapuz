@@ -16,28 +16,28 @@ public class bigSpikesController : MonoBehaviour
     public float maxUpMoveSpeed;
     public float downMoveSpeed;
 
-    private Vector2 playerStartPos;
+    private Vector2 _playerStartPos;
     public Vector2 ElevatorStartPos;
-    private Vector2 initialPosition;
-    private bool spikesUp = false;
-    private float currentUpMoveSpeed;
+    private Vector2 _initialPosition;
+    private bool _spikesUp = false;
+    private float _currentUpMoveSpeed;
 
     void Start()
     {
-        initialPosition = transform.position;
-        currentUpMoveSpeed = startUpMoveSpeed;
+        _initialPosition = transform.position;
+        _currentUpMoveSpeed = startUpMoveSpeed;
         ToggleSpikes();
     }
 
     void ToggleSpikes()
     {
-        spikesUp = !spikesUp;
-        if (spikesUp)
-            StartCoroutine(MoveSpike(initialPosition + new Vector2(0, moveSpace), upTime, currentUpMoveSpeed));
+        _spikesUp = !_spikesUp;
+        if (_spikesUp)
+            StartCoroutine(MoveSpike(_initialPosition + new Vector2(0, moveSpace), upTime, _currentUpMoveSpeed));
         else
-            StartCoroutine(MoveSpike(initialPosition, downTime, downMoveSpeed));
+            StartCoroutine(MoveSpike(_initialPosition, downTime, downMoveSpeed));
 
-        Invoke("ToggleSpikes", spikesUp ? upTime : downTime);
+        Invoke("ToggleSpikes", _spikesUp ? upTime : downTime);
     }
 
     IEnumerator MoveSpike(Vector2 targetPosition, float duration, float speed)
@@ -57,10 +57,10 @@ public class bigSpikesController : MonoBehaviour
 
     private void Update()
     {
-        if(spikesUp && currentUpMoveSpeed < maxUpMoveSpeed)
-            currentUpMoveSpeed += Time.deltaTime;
+        if(_spikesUp && _currentUpMoveSpeed < maxUpMoveSpeed)
+            _currentUpMoveSpeed += Time.deltaTime;
         else
-            currentUpMoveSpeed = startUpMoveSpeed;
+            _currentUpMoveSpeed = startUpMoveSpeed;
     }
 
    
@@ -68,10 +68,10 @@ public class bigSpikesController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerStartPos = new Vector2(-27.16f, 1.12f);
-            playerRB.transform.position = playerStartPos;
+            _playerStartPos = new Vector2(-27.16f, 1.12f);
+            playerRB.transform.position = _playerStartPos;
             Elevator.transform.position = ElevatorStartPos;
-            Debug.Log("Player start position: " + playerStartPos);
+            Debug.Log("Player start position: " + _playerStartPos);
             Debug.Log("Player position after respawn: " + playerRB.transform.position);
         }
     }

@@ -7,7 +7,7 @@ public class vaultButtonControl : MonoBehaviour
     [SerializeField] GameObject[] symbols;
     [SerializeField] SpriteRenderer activeGlow;
     [SerializeField] AudioSource audioSource;
-    private int currentSymbolIndex = 0;
+    private int _currentSymbolIndex = 0;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -19,14 +19,14 @@ public class vaultButtonControl : MonoBehaviour
                 audioSource.Play();
 
                 //turn prev off
-                symbols[currentSymbolIndex].SetActive(false);
+                symbols[_currentSymbolIndex].SetActive(false);
 
                 //glow in n out
                 StartCoroutine(glowControl());
 
                 //turn next on
-                currentSymbolIndex = (currentSymbolIndex + 1) % symbols.Length;
-                symbols[currentSymbolIndex].SetActive(true);
+                _currentSymbolIndex = (_currentSymbolIndex + 1) % symbols.Length;
+                symbols[_currentSymbolIndex].SetActive(true);
             }
         }
     }

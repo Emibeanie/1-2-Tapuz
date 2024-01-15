@@ -31,7 +31,7 @@ public class playerController : MonoBehaviour
     private float _checkRadius = 0.2f;
     private float _cutJumpHeight = 0.5f;
     private bool _isGrounded;
-    public float coyoteTime = 0.2f;
+    public float coyoteTime = 0.2f; // to fix
     private float coyoteTimeCounter;
 
     private void Awake()
@@ -92,9 +92,9 @@ public class playerController : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(feetPos.position, _checkRadius, whatIsGround);
         _animator.SetBool("IsGrounded", _isGrounded);
 
-        if (_isGrounded || coyoteTimeCounter > 0)
+        if(_isGrounded || coyoteTimeCounter > 0)
         {
-            if (Input.GetButtonDown("Jump")) //jump
+            if(Input.GetButtonDown("Jump")) //jump
             {
                 _animator.SetBool("IsJumping", true);
                 _audioSource.PlayOneShot(jumpSound);
@@ -108,7 +108,7 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Jump") && _rb.velocity.y > 0.01f) //cut jump on button release
+        if(Input.GetButtonUp("Jump") && _rb.velocity.y > 0.01f) //cut jump on button release
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _cutJumpHeight);
             _animator.SetBool("IsJumping", false);
@@ -118,7 +118,7 @@ public class playerController : MonoBehaviour
 
         }
 
-        if (!_isGrounded)
+        if(!_isGrounded)
             coyoteTimeCounter -= Time.deltaTime;
         else
             coyoteTimeCounter = coyoteTime;
@@ -141,7 +141,7 @@ public class playerController : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + (_upGravityMultiplier * Time.deltaTime));
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) // add new landing anim
     {
         if(collision.transform.CompareTag("Ground"))
         {

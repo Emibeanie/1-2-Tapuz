@@ -16,10 +16,8 @@ public class chainedPlat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            
             _anim.SetBool("Move", true);
             _audioSource.Play();
-
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

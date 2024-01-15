@@ -21,30 +21,30 @@ public class spikesController : MonoBehaviour
     public float waitTime;
 
     public Vector2 playerStartPos;
-    private Vector2 initialPosition;
-    private bool spikesUp = false;
-    private float currentUpMoveSpeed;
+    private Vector2 _initialPosition;
+    private bool _spikesUp = false;
+    private float _currentUpMoveSpeed;
 
     void Start()
     {
-        initialPosition = transform.position;
-        currentUpMoveSpeed = startUpMoveSpeed;
+        _initialPosition = transform.position;
+        _currentUpMoveSpeed = startUpMoveSpeed;
         Invoke("ToggleSpikes", waitTime);
     }
 
     void ToggleSpikes()
     {
-        spikesUp = !spikesUp;
-        if (spikesUp)
+        _spikesUp = !_spikesUp;
+        if (_spikesUp)
         {
-            StartCoroutine(MoveSpike(initialPosition + new Vector2(0, moveSpace), upTime, currentUpMoveSpeed));
+            StartCoroutine(MoveSpike(_initialPosition + new Vector2(0, moveSpace), upTime, _currentUpMoveSpeed));
             audioSource.clip = spikesSound;
             audioSource.Play();
         }
         else
-            StartCoroutine(MoveSpike(initialPosition, downTime, downMoveSpeed));
+            StartCoroutine(MoveSpike(_initialPosition, downTime, downMoveSpeed));
 
-        Invoke("ToggleSpikes", spikesUp ? upTime : downTime);
+        Invoke("ToggleSpikes", _spikesUp ? upTime : downTime);
     }
 
     IEnumerator MoveSpike(Vector2 targetPosition, float duration, float speed)
@@ -64,10 +64,10 @@ public class spikesController : MonoBehaviour
 
     private void Update()
     {
-        if (spikesUp && currentUpMoveSpeed < maxUpMoveSpeed)
-            currentUpMoveSpeed += Time.deltaTime;
+        if (_spikesUp && _currentUpMoveSpeed < maxUpMoveSpeed)
+            _currentUpMoveSpeed += Time.deltaTime;
         else
-            currentUpMoveSpeed = startUpMoveSpeed;
+            _currentUpMoveSpeed = startUpMoveSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,7 +76,6 @@ public class spikesController : MonoBehaviour
         {
             RandomDeath();
             playerRB.transform.position = playerStartPos;
-            
         }
     }
 
