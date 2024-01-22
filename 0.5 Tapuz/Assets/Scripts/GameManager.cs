@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Game Start")]
+    [SerializeField] GameObject startPanel;
+    [SerializeField] GameObject Elio;
+
     [Header("Game Components")]
     [SerializeField] AudioSource ambienceAudioSource;
     [SerializeField] AudioClip ambienceStart;
@@ -66,5 +70,11 @@ public class GameManager : MonoBehaviour
 
         ambienceAudioSource.clip = ambienceLoop;
         ambienceAudioSource.Play();
+    }
+
+    public void StartGame()
+    {
+        startPanel.SetActive(false);
+        Elio.SetActive(true);
     }
 }
