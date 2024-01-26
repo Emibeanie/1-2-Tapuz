@@ -8,6 +8,9 @@ public class playerController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] SpriteRenderer[] spriteRenderers;
+    [SerializeField] ParticleSystem jumpParticle;
+    [SerializeField] ParticleSystem fallParticle;
+    [SerializeField] ParticleSystem inAirParticle;
     public AudioClip runSound;
     public AudioClip landSound;
     public AudioClip jumpSound;
@@ -55,16 +58,17 @@ public class playerController : MonoBehaviour
     {
          _rb.velocity = new Vector2(_moveInput * moveSpeed, _rb.velocity.y);
       
-        if (jumpPressed)
+        if (jumpPressed) // jump
         {
             _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
             jumpPressed = false;
+            inAirParticle.Play();
         }
-        else
-        if (jumpRelease)
+        else if (jumpRelease) // jump cut
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _cutJumpHeight);
             jumpRelease = false;
+            inAirParticle.Stop();
         }
 
     }
@@ -77,6 +81,7 @@ public class playerController : MonoBehaviour
         {
             _animator.SetBool("IsRunning", true);
             _animator.SetBool("IsIdle", false);
+            fallParticle.Stop();
         }
         else
         {
@@ -116,6 +121,7 @@ public class playerController : MonoBehaviour
             {
                 _animator.SetBool("IsJumping", true);
                 _audioSource.PlayOneShot(jumpSound);
+                jumpParticle.Play();
 
                 jumpPressed = true;
                 jumpRelease = false;
@@ -135,7 +141,6 @@ public class playerController : MonoBehaviour
 
             foreach (SpriteRenderer renderer in spriteRenderers)
                 renderer.sortingLayerName = _forwardJumpLayer;
-
         }
 
         if(!_isGrounded)
@@ -163,10 +168,13 @@ public class playerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) // add new landing anim
     {
-        if(collision.transform.CompareTag("Ground"))
+        if (collision.transform.CompareTag("Ground"))
         {
             Debug.Log("DETECTEDDDDDD");
             _animator.SetBool("IsIdle", true);
+
+            if (_rb.velocity.y < 0.0f)
+                fallParticle.Play();
         }
     }
 }
