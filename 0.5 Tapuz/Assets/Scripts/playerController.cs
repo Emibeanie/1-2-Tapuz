@@ -23,6 +23,8 @@ public class playerController : MonoBehaviour
     public float moveSpeed;
     private float _moveInput;
     private bool _isFacingRight = true;
+    private bool jumpPressed;
+    private bool jumpRelease;
 
     [Header("Jump")]
     public float jumpForce;
@@ -51,7 +53,20 @@ public class playerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector2(_moveInput * moveSpeed, _rb.velocity.y);
+         _rb.velocity = new Vector2(_moveInput * moveSpeed, _rb.velocity.y);
+      
+        if (jumpPressed)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+            jumpPressed = false;
+        }
+        else
+        if (jumpRelease)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _cutJumpHeight);
+            jumpRelease = false;
+        }
+
     }
 
     void Movement()
@@ -92,6 +107,9 @@ public class playerController : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(feetPos.position, _checkRadius, whatIsGround);
         _animator.SetBool("IsGrounded", _isGrounded);
 
+        if (_rb.velocity.y > 0)
+            coyoteTimeCounter = 0;
+
         if(_isGrounded || coyoteTimeCounter > 0)
         {
             if(Input.GetButtonDown("Jump")) //jump
@@ -99,8 +117,8 @@ public class playerController : MonoBehaviour
                 _animator.SetBool("IsJumping", true);
                 _audioSource.PlayOneShot(jumpSound);
 
-                _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
+                jumpPressed = true;
+                jumpRelease = false;
                 foreach (SpriteRenderer renderer in spriteRenderers)
                     renderer.sortingLayerName = _backJumpLayer;
 
@@ -110,7 +128,9 @@ public class playerController : MonoBehaviour
 
         if(Input.GetButtonUp("Jump") && _rb.velocity.y > 0.01f) //cut jump on button release
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _cutJumpHeight);
+            Debug.Log("Release");
+            jumpRelease = true;
+            
             _animator.SetBool("IsJumping", false);
 
             foreach (SpriteRenderer renderer in spriteRenderers)
