@@ -16,7 +16,6 @@ public class bigSpikesController : MonoBehaviour
     public float maxUpMoveSpeed;
     public float downMoveSpeed;
 
-    private Vector2 _playerStartPos;
     public Vector2 ElevatorStartPos;
     private Vector2 _initialPosition;
     private bool _spikesUp = false;
@@ -63,16 +62,14 @@ public class bigSpikesController : MonoBehaviour
             _currentUpMoveSpeed = startUpMoveSpeed;
     }
 
-   
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _playerStartPos = new Vector2(-27.16f, 1.12f);
-            playerRB.transform.position = _playerStartPos;
+            Vector2 newPos = new Vector2(-27f, 1.12f);
+            playerRB.MovePosition(newPos);
+
             Elevator.transform.position = ElevatorStartPos;
-            Debug.Log("Player start position: " + _playerStartPos);
-            Debug.Log("Player position after respawn: " + playerRB.transform.position);
         }
     }
 }
