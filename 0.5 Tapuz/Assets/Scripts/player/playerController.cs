@@ -45,7 +45,6 @@ public class playerController : MonoBehaviour
 
     private void Awake()
     {
-        _audioSource.volume = 1;
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
@@ -96,9 +95,13 @@ public class playerController : MonoBehaviour
         {
             _animator.SetBool("IsRunning", true);
             _animator.SetBool("IsIdle", false);
-            _audioSource.clip = runSound;
-            _audioSource.Play();
             fallParticle.Stop();
+
+            if (_isGrounded && !_audioSource.isPlaying)
+            {
+                _audioSource.clip = runSound;
+                _audioSource.Play();
+            }
         }
         else
         {

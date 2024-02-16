@@ -66,7 +66,7 @@ public class bigSpikesController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Vector2 newPos = new Vector2(-27f, 1.12f);
+            Vector2 newPos = new Vector2(-27f, 1f);
             playerRB.MovePosition(newPos);
 
             Elevator.transform.position = ElevatorStartPos;
