@@ -60,7 +60,7 @@ AnimationClip:
     - time: 1.5833334
       value: {fileID: 632119566, guid: b026f79f54421c749a3b298c28f27de9, type: 3}
     attribute: m_Sprite
-    path: Shadow_HandAnim_SpriteSheet_0
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 12
@@ -71,7 +71,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2929948182
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
